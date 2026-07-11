@@ -3,7 +3,7 @@ export
 
 MIGRATIONS := db/migrations
 
-.PHONY: help sqlc migrate-new migrate-up migrate-down
+.PHONY: help sqlc verify migrate-new migrate-up migrate-down
 
 require-db:
 	@[ -n "$(DB_URL)" ] || { echo "DB_URL not set (add to .env)"; exit 1; }
@@ -13,6 +13,9 @@ help: ## Show targets
 
 sqlc:  ## Generate database code
 	sqlc generate
+
+verify: ## Fail if generated code is stale
+	sqlc diff
 
 migrate-new: ## Create migration (make migrate-new <name>)
 	@name="$(word 2,$(MAKECMDGOALS))"; \

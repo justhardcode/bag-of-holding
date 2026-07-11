@@ -5,9 +5,9 @@ Inventory management service.
 ## Requirements
 
 - go 1.26+
-- sqlc 1.31+
-- goose 3.27+
-- psql 18+
+- sqlc @latest
+- goose @latest
+- psql 15+
 
 ## Getting Started
 
