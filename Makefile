@@ -14,6 +14,9 @@ help: ## Show targets
 sqlc:  ## Generate database code
 	sqlc generate
 
+verify: ## Fail if generated code is stale
+	sqlc diff
+
 migrate-new: ## Create migration (make migrate-new <name>)
 	@name="$(word 2,$(MAKECMDGOALS))"; \
 	if [ -z "$$name" ]; then \
